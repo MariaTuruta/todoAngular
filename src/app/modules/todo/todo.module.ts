@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TodoComponent } from './containers/todo/todo.component';
+import { TaskTicketComponent } from './containers/task-ticket/task-ticket.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { TodoComponent } from './containers/todo/todo.component';
       component: TodoComponent
     }])
   ],
-  declarations: [TodoComponent]
+  declarations: [TodoComponent, TaskTicketComponent]
 })
 export class TodoModule { }

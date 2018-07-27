@@ -1,18 +1,7 @@
-.buttonstop {
-  background: 	#a65959;
+.deletebtn {
+  background: #a65959;
 }
 
-.buttonnice {
+.submitbtn {
   background: #3e7567;
 }
-.mycont {
-  width:30%;
-  border-style: solid;
-  margin: 10px;
-  border-color: #3e7567;
-  border-radius: 3px;
-  background: #deede9;
-  box-shadow: 5px 4px 7px 3px #75a38c;
-}
-
-

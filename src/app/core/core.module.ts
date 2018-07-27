@@ -7,7 +7,6 @@ import { LoggerInterceptorService } from './interceptor/logger-interceptor.servi
 import { HeaderComponent} from './header/header.component';
 import { HomeComponent} from '../modules/home/containers/home/home.component';
 import { NavbarComponent} from '../core/navbar/navbar.component';
-import { DetailsComponent } from './details/details.component';
 import { FooterComponent } from './footer/footer.component';
 
 const COMPONENTS = [
@@ -33,7 +32,6 @@ export function initAppFactory(initService: InitService) {
   ],
   declarations: [
     ...COMPONENTS,
-    DetailsComponent
   ],
   exports: [
     ...COMPONENTS,

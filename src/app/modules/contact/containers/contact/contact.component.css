@@ -1,17 +1,18 @@
-.myForm{
-  width:50%;
+.userform {
+  width: 50%;
   padding-left: 15%;
   padding-top: 5%;
   padding-bottom: 20%;
 }
-.container{
+
+.container {
   background: #808080;
-  color:#eef6f4;
+  color: #eef6f4;
   padding: 50px;
-  margin:0px;
+  margin: 0px;
   width: 100%;
 }
 
-.buttonnice {
+.submitbtn {
   background: #2d5349;
 }

@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {removeStrings} from '../../shared/helpers/';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
   private todoStorageKey = 'todos';
-
+  public array = [];
   constructor(private todoService: TodoService) {
   }
 
-  addTodo(todoContent){
+  addTodo(todoContent) {
     const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
     todos.push(todoContent);
     localStorage.setItem(this.todoStorageKey, JSON.stringify(todos));
@@ -18,24 +19,27 @@ export class TodoService {
 
   getAllTodos() {
     const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
-    return todos;
+    this.array = todos ;
+    return this.array;
   }
 
-  deleteTodo(name: string){
+  deleteTodo(name: string) {
     const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
     const resultedTodos = todos.filter(todo => todo.name !== name);
     localStorage.setItem(this.todoStorageKey, JSON.stringify(resultedTodos));
     return resultedTodos;
   }
 
-  deleteAllTodos(){
+  deleteAllTodos() {
     localStorage.removeItem(this.todoStorageKey);
   }
 
-  getTodosByName(name: string) {
-    const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
-    const filteredTodos = todos.filter(todo => todo.name.includes(name));
-    return filteredTodos ;
-  }
-
+  // getTodosByName(name: string) {
+  //   const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
+  //   const filteredTodos = todos.filter(todo => {
+  //     const trimmedTodo = removeStrings(todo.name);
+  //     return trimmedTodo.includes(name);
+  //   });
+  //   return filteredTodos;
+  // }
 }

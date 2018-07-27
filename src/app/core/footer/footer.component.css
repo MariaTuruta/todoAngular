@@ -2,7 +2,7 @@
   margin: 0px;
 }
 
-.a {
+.footer {
   padding: 0px;
   bottom: 0;
   width: 100%;
@@ -16,7 +16,7 @@
   line-height: 16.8427px;
 }
 
-.b {
+.column {
   display: inline;
   width: 50%;
 }

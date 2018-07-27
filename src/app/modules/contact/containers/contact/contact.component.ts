@@ -9,7 +9,7 @@ import Contacts from '../../../../shared/models/contacts';
 export class ContactComponent implements OnInit {
   submitted = false;
 
-  contacts : Contacts =
+  contacts: Contacts =
     {
       firstname: '',
       lastname: '',

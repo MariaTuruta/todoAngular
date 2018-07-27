@@ -1,0 +1,36 @@
+
+<button type="button" class="btn btn-sm btn-outline-primary deletebtn" (click)="onDeleteAll()">Delete All ToDos
+</button>
+<br/><br/>
+
+
+<!--<div>-->
+  <!--<label class="form-check-label">Find Todo:</label><br>-->
+  <!--<input type="text"-->
+         <!--class="form-control"-->
+         <!--#input-->
+         <!--(keyup)="onFindTodo(input.value)"-->
+         <!--placeholder="Enter your ToDo name here...">-->
+<!--</div><br/>-->
+
+<div *ngFor="let todo of result">
+
+  <div  class="col-sm-4 card taskcontainer">
+    <h5 class="cardbutton-title">
+      <b>Todo name:</b> {{todo.name}}
+    </h5>
+    <h5 class="card-title ">
+      <b>Status:</b> {{todo.status}}
+    </h5>
+    <h5 class="card-title ">
+      <b>Date of creation:</b> {{todo.date | date:'dd MMM yyyy'}}
+    </h5>
+    <h5 class="card-text ">
+      <b>Description:</b> {{todo.description}}
+    </h5>
+    <button type="button" (click)="onDeleteOne(todo.name)" class="btn btn-sm btn-outline-primary deletebtn">Delete
+    </button>
+    <br><br>
+  </div>
+
+</div>
