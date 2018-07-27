@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TodoService} from '../../todo.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {removeStrings} from '../../../../shared/helpers';
@@ -9,6 +9,7 @@ import {removeStrings} from '../../../../shared/helpers';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  @ViewChild('input') searchInput;
 
   contactForm: FormGroup;
   submitted = false;
@@ -44,7 +45,7 @@ export class TodoComponent implements OnInit {
     this.todoService.addTodo(data);
     this.result = this.todoService.getAllTodos();
 
-    //alert('SUCCESS!\n\n' + JSON.stringify(this.contactForm.value));
+    alert('SUCCESS!\n\n' + JSON.stringify(this.contactForm.value));
   }
 
   onDeleteAll() {
@@ -60,6 +61,14 @@ export class TodoComponent implements OnInit {
   onFindTodo(name) {
     const trimmedName = name ? removeStrings(name) : '';
     this.result = this.todoService.getTodosByName(trimmedName);
-    console.log(this.result)
+  }
+
+  onTodoUpdate(todo) {
+    this.todoService.updateTodo(todo); // update la todo
+
+    const trimmedName = this.searchInput.nativeElement.value ? removeStrings(this.searchInput.nativeElement.value) : '';
+
+    this.result = this.todoService.getTodosByName(trimmedName);
+    console.log(this.searchInput.nativeElement.value);
   }
 }

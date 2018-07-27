@@ -44,6 +44,21 @@ export class TodoService {
     return filteredTodos;
   }
 
+  updateTodo(todoToChange) {
+    let todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
+    if (!todos.length) {
+      return;
+    }
+    todos = todos.map(todo => {
+      if (todoToChange.name === todo.name) {
+        todo.status = todoToChange.status;
+      }
+      return todo;
+    });
+    localStorage.setItem(this.todoStorageKey, JSON.stringify(todos));
+  }
+
+
   // copyPutHttp() {
   //   const jsontodos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
   //

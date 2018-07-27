@@ -53,7 +53,7 @@
   <br/>
 
   <div *ngFor="let todo of result">
-    <app-task-ticket [todo] = "todo"  (onDelete)="onDeleteOne($event)" ></app-task-ticket>
+    <app-task-ticket [todo] = "todo"  (onDelete)="onDeleteOne($event)" (onUpdate)="onTodoUpdate($event)" ></app-task-ticket>
   </div>
 
 </div>

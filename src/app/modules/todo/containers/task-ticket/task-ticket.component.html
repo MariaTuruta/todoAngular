@@ -1,17 +1,24 @@
-  <div  class="col-sm-4 card taskcontainer" >
-    <h5 class="cardbutton-title">
-      <b>Todo name:</b> {{todo.name}}
-    </h5>
-    <h5 class="card-title ">
-      <b>Status:</b> {{todo.status}}
-    </h5>
-    <h5 class="card-title ">
-      <b>Date of creation:</b> {{todo.date | date:'dd MMM yyyy'}}
-    </h5>
-    <h5 class="card-text ">
-      <b>Description:</b> {{todo.description}}
-    </h5>
-    <button type="button" (click)="deleteTodo()"   class="btn btn-sm btn-outline-primary deletebtn">Delete
-    </button>
-    <br><br>
-
+<div class="col-sm-4 card taskcontainer">
+  <h5 class="cardbutton-title">
+    <b>Todo name:</b> {{todo.name}}
+  </h5>
+  <h5 class="card-title " >
+    <b>Status:</b>
+    <select name="status"
+            (ngModelChange) = "changeToDo($event)"
+            [ngModel]="todo.status"
+            class="form-control">
+      <option value="finished">Finished</option>
+      <option value="unfinished">Unfinished</option>
+    </select>
+  </h5>
+  <h5 class="card-title ">
+    <b>Date of creation:</b> {{todo.date | date:'dd MMM yyyy'}}
+  </h5>
+  <h5 class="card-text ">
+    <b>Description:</b> {{todo.description}}
+  </h5>
+  <button type="button" (click)="deleteTodo()" class="btn btn-sm btn-outline-primary deletebtn">Delete
+  </button>
+  <br><br>
+</div>
