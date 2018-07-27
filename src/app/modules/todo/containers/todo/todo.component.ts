@@ -1,6 +1,7 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../../todo.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {removeStrings} from '../../../../shared/helpers';
 
 @Component({
   selector: 'app-todo',
@@ -12,6 +13,7 @@ export class TodoComponent implements OnInit {
   contactForm: FormGroup;
   submitted = false;
   public result = [];
+
   constructor(private todoService: TodoService, private formBuilder: FormBuilder) {
   }
 
@@ -22,6 +24,9 @@ export class TodoComponent implements OnInit {
       date: new Date(),
       description: ['', Validators.required]
     });
+
+    this.onFindTodo('');
+    this.result = this.todoService.getAllTodos();
   }
 
   get f() {
@@ -38,10 +43,23 @@ export class TodoComponent implements OnInit {
 
     this.todoService.addTodo(data);
     this.result = this.todoService.getAllTodos();
-    //console.log(this.todoService.getAllTodos());
 
     //alert('SUCCESS!\n\n' + JSON.stringify(this.contactForm.value));
   }
 
+  onDeleteAll() {
+    this.todoService.deleteAllTodos();
+    this.result = this.todoService.getAllTodos();
+  }
 
+  onDeleteOne(name) {
+    const todos = this.todoService.deleteTodo(name);
+    this.result = this.todoService.getAllTodos();
+  }
+
+  onFindTodo(name) {
+    const trimmedName = name ? removeStrings(name) : '';
+    this.result = this.todoService.getTodosByName(trimmedName);
+    console.log(this.result)
+  }
 }

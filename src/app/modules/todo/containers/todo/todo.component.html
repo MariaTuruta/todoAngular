@@ -38,7 +38,23 @@
   </form>
   <hr/>
 
-  <app-task-ticket></app-task-ticket>
+  <button type="button" class="btn btn-sm btn-outline-primary deletebtn" (click)="onDeleteAll()">Delete All ToDos
+  </button>
+  <br/><br/>
+
+  <div>
+    <label class="form-check-label">Find Todo:</label><br>
+    <input type="text"
+           class="form-control"
+           #input
+           (keyup)="onFindTodo(input.value)"
+           placeholder="Enter your ToDo name here...">
+  </div>
+  <br/>
+
+  <div *ngFor="let todo of result">
+    <app-task-ticket [todo] = "todo"  (onDelete)="onDeleteOne($event)" ></app-task-ticket>
+  </div>
 
 </div>
 <br><br>

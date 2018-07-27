@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TodoService} from '../../todo.service';
 import {removeStrings} from '../../../../shared/helpers/';
 
@@ -8,32 +8,26 @@ import {removeStrings} from '../../../../shared/helpers/';
   styleUrls: ['./task-ticket.component.css']
 })
 export class TaskTicketComponent implements OnInit {
-  public result = [];
+  @Input() todo;
+  @Output() onDelete = new EventEmitter();
 
   constructor(private todoService: TodoService){}
 
   ngOnInit() {
-    //this.onFindTodo('');
-    this.result = this.todoService.getAllTodos();
+    this.onFindTodo('');
+    // this.result = this.todoService.getAllTodos();
+    // return this.result;
   }
 
-  // onFindTodo(name) {
-  //   const trimmedName = name ? removeStrings(name) : '';
-  //   this.result = this.todoService.getTodosByName(trimmedName);
-  //   //console.log(JSON.stringify(this.result));
-  //   console.log(this.result)
-  //   return this.result;
-  // }
-
-  onDeleteAll() {
-    this.todoService.deleteAllTodos();
-    this.result = this.todoService.getAllTodos();
-    return this.result;
+  onFindTodo(name) {
+  const trimmedName = name ? removeStrings(name) : '';
+    // this.result = this.todoService.getTodosByName(trimmedName);
+    // console.log(this.result)
+    // return this.result;
   }
 
-  onDeleteOne(name) {
-    const todos = this.todoService.deleteTodo(name);
-    this.result = this.todoService.getAllTodos();
-    return this.result;
+  deleteTodo(){
+    this.onDelete.emit(this.todo.name);
   }
+
 }

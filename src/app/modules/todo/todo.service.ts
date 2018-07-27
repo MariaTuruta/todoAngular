@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {removeStrings} from '../../shared/helpers/';
-
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,8 @@ import {removeStrings} from '../../shared/helpers/';
 export class TodoService {
   private todoStorageKey = 'todos';
   public array = [];
-  constructor(private todoService: TodoService) {
+
+  constructor(private todoService: TodoService, private http: HttpClient) {
   }
 
   addTodo(todoContent) {
@@ -19,7 +20,7 @@ export class TodoService {
 
   getAllTodos() {
     const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
-    this.array = todos ;
+    this.array = todos;
     return this.array;
   }
 
@@ -34,12 +35,23 @@ export class TodoService {
     localStorage.removeItem(this.todoStorageKey);
   }
 
-  // getTodosByName(name: string) {
-  //   const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
-  //   const filteredTodos = todos.filter(todo => {
-  //     const trimmedTodo = removeStrings(todo.name);
-  //     return trimmedTodo.includes(name);
-  //   });
-  //   return filteredTodos;
+  getTodosByName(name: string) {
+    const todos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
+    const filteredTodos = todos.filter(todo => {
+      const trimmedTodo = removeStrings(todo.name);
+      return trimmedTodo.includes(name);
+    });
+    return filteredTodos;
+  }
+
+  // copyPutHttp() {
+  //   const jsontodos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
+  //
+  //   jsontodos = JSON.parse(this.http.put('http://localhost:3000', jsontodos)
+  //     .subscribe(console.log('PUT call successful value returned in body')));
+  //
+  //   this.array = jsontodos;
+  //   console.log(array);
+  //   return this.array;
   // }
 }
