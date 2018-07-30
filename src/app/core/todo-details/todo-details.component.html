@@ -1,0 +1,38 @@
+
+
+
+
+
+<div class="container">
+  <h1 class="list-group-item">Details about:
+    <strong>{{ todos.name }}</strong>
+  </h1>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Todo name : </strong>
+      {{ todos.name }}
+    </li>
+
+    <li class="list-group-item">
+      <strong>Todo created at : </strong>
+      {{ todos.date | date:'dd MMM yyyy' }}
+    </li>
+
+    <li *ngIf="!show" class="list-group-item list-group-item-danger">
+      <strong>Finished : </strong>
+      {{ todos.status }}
+    </li>
+
+    <li *ngIf="show" class="list-group-item list-group-item-success">
+      <strong>Finished : </strong>
+      {{ todos.status }}
+    </li>
+
+    <li class="list-group-item">
+      <strong>Description :</strong>
+      {{ todos.description }}
+    </li>
+  </ul>
+</div>
+

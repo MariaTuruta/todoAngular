@@ -1,16 +1,11 @@
 {
   "todos": [
     {
-      "name": "ala",
-      "status": "finished",
-      "date": "2018-07-26T12:33:33.872Z",
-      "description": "lkjhgfdsa"
-    },
-    {
-      "name": "gfds",
-      "status": "finished",
+      "id": "6",
+      "name": "myitem",
+      "status": "unfinished",
       "date": "2018-07-26T13:28:55.768Z",
-      "description": "fgds"
+      "description": "fa"
     }
   ]
 }

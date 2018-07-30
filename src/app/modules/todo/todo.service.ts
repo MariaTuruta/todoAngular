@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class TodoService {
   private todoStorageKey = 'todos';
-  public array = [];
+  public array: any;
 
   constructor(private todoService: TodoService, private http: HttpClient) {
   }
@@ -58,15 +58,33 @@ export class TodoService {
     localStorage.setItem(this.todoStorageKey, JSON.stringify(todos));
   }
 
+/*  postTodosOnServer() {
+    this.array = this.http.post('http://localhost:3000/todos', {
+      'id': '6',
+      'name': 'myitem',
+      'status': 'unfinished',
+      'date': '2018-07-26T13:28:55.768Z',
+      'description': 'faaaaaaa'
+    });
 
-  // copyPutHttp() {
-  //   const jsontodos = JSON.parse(localStorage.getItem(this.todoStorageKey)) || [];
-  //
-  //   jsontodos = JSON.parse(this.http.put('http://localhost:3000', jsontodos)
-  //     .subscribe(console.log('PUT call successful value returned in body')));
-  //
-  //   this.array = jsontodos;
-  //   console.log(array);
-  //   return this.array;
-  // }
+    console.log(this.array);
+    return this.array;
+  }
+
+  putTodosOnServer() {
+    this.array = this.http.put('http://localhost:3000/todos/:id', {
+      'id': '6',
+      'name': 'yyyyyyyyyytem',
+      'status': 'unfinished',
+      'date': '2018-07-26T13:28:55.768Z',
+      'description': 'faaaaaaa'
+    });
+
+    console.log(this.array);
+    return this.array;
+  }
+
+  getTodosFromServer() {
+    return this.http.get('http://localhost:3000/todos');
+  }*/
 }

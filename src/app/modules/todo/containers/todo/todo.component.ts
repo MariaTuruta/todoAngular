@@ -25,6 +25,24 @@ export class TodoComponent implements OnInit {
       date: new Date(),
       description: ['', Validators.required]
     });
+/*
+    this.todoService.getTodosFromServer().subscribe((result: any) => {
+      this.result = result;
+      this.result.concat(this.todoService.getAllTodos());
+      console.log('GET call successful value from body');
+    });
+    this.todoService.putTodosOnServer().subscribe((result: any) => {
+      this.result = result;
+      this.result.concat(this.todoService.getAllTodos());
+      console.log('PUT call successful value returned in body');
+    });
+
+
+    this.todoService.postTodosOnServer().subscribe((result: any) => {
+      this.result = result;
+      this.result.concat(this.todoService.getAllTodos());
+      console.log('POST call successful value returned in body');
+    });*/
 
     this.onFindTodo('');
     this.result = this.todoService.getAllTodos();
